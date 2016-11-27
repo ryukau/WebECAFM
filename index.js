@@ -222,8 +222,8 @@ class Oscillator {
         this.harmoFunc = (phase, index) => {
           var sum = 0
           for (var i = 0; i < this._harmonics; ++i) {
-            var gain = Math.pow(0.5, i) * this.eca[index].gainAt(i)
-            sum += gain * Math.sin(phase * i)
+            var gain = Math.pow(0.75, i) * this.eca[index].gainAt(i)
+            sum += gain * Math.sin(phase * (i + 1))
           }
           return sum * 0.4
         }
@@ -233,7 +233,7 @@ class Oscillator {
         this.harmoFunc = (phase, index) => {
           var sum = 0
           for (var i = 0; i < this._harmonics; ++i) {
-            sum += this.eca[index].gainAt(i) * Math.sin(phase * i)
+            sum += this.eca[index].gainAt(i) * Math.sin(phase * (i + 1))
           }
           return sum / this._harmonics
         }
